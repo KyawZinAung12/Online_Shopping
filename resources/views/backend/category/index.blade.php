@@ -34,10 +34,20 @@
                     @endphp
                     
                     @foreach ($categories as $category)
+                    
                         <tr>
                             <td>{{$j++}}</td>
                             <td>{{$category->name}}</td>
-                            <td> <a href="" class="btn btn-warning">Edit</a></td>
+                            <td>
+                                <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning">Edit</a>
+
+                                <form action="{{route('categories.destroy',$category->id)}}" method="post" class="d-inline-block" onclick="return confirm('Are You Sure Delete')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                
+                            </td>
                         </tr>
                     @endforeach
                     

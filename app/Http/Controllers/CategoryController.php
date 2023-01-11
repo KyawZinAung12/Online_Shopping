@@ -63,7 +63,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        $category=Category::find($id);
+        // dd($category);
+        return view('backend.category.edit',compact('category'));
     }
 
     /**
@@ -75,7 +78,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($id);
+        // dd($request);
+        $category=Category::find($id);
+        $category->name=$request->category_name;
+        $category->save();
+        return redirect()->route('categories.index');
+
     }
 
     /**
@@ -86,6 +95,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $category=Category::find($id);
+        $category->delete();
+        return redirect()->route('categories.index');
+
     }
 }
