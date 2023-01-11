@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{$j++}}</td>
                             <td>{{$category->name}}</td>
-                            <td></td>
+                            <td> <a href="" class="btn btn-warning">Edit</a></td>
                         </tr>
                     @endforeach
                     
